@@ -48,7 +48,7 @@
       <li>une seule information sur toi : si tu as moins de 18 ans ou non, pour adapter les réponses.</li>
     </ul>
     <p>L'IA ne reçoit <strong>jamais</strong> ton prénom ni ton année de naissance.</p>
-    <p>Le chemin est le suivant : ton iPhone envoie la demande, protégée (chiffrée), à notre relais, hébergé chez <strong>Supabase</strong> en Irlande (Union européenne). Le relais la transmet au service <strong>OpenRouter</strong>, qui la confie à <strong>Claude</strong>, l'IA d'<strong>Anthropic</strong>. La réponse revient par le même chemin.</p>
+    <p>Le chemin est le suivant : ton iPhone envoie la demande, protégée (chiffrée), à notre relais, hébergé chez <strong>Supabase</strong> en Irlande (Union européenne). Le relais la transmet au service <strong>OpenRouter</strong>, qui la confie à <strong>Claude</strong>, l'IA d'<strong>Anthropic</strong>, installée sur les serveurs d'<strong>Amazon</strong> (Amazon Bedrock) ou de <strong>Google</strong> (Google Cloud Vertex AI) qui ne gardent rien. La réponse revient par le même chemin.</p>
     <p><strong>Durée :</strong> aucun d'eux ne garde ta soirée. Le relais n'a pas de base de données et n'enregistre pas le contenu. Nous utilisons uniquement les chemins d'OpenRouter où rien n'est conservé ni réutilisé (« zéro conservation »). Tes écrits ne servent jamais à entraîner l'IA.</p>
     <p>Comme tout serveur, le relais tient un journal technique de chaque connexion : heure, adresse IP, pays et ville approximative, type d'appareil. Ce journal ne contient jamais le texte de ta soirée. Il sert seulement à faire fonctionner le service et à repérer les pannes. Nous ne pouvons le consulter que pendant 1 jour ; Supabase le conserve ensuite selon sa propre politique de confidentialité.</p>
     <p><strong>Base :</strong> ton accord, donné à l'écran « Tes écrits et l'IA ». Sans l'IA, ton journal fonctionne quand même.</p>
@@ -75,10 +75,11 @@
       <li><strong>Supabase</strong> : héberge le relais vers l'IA, en Irlande.</li>
       <li><strong>OpenRouter</strong> : transmet la demande au modèle d'IA.</li>
       <li><strong>Anthropic</strong> : fournit Claude, l'IA qui te répond.</li>
+      <li><strong>Amazon Bedrock</strong> ou <strong>Google Cloud Vertex AI</strong> : font fonctionner Claude, sans garder ta soirée.</li>
       <li><strong>RevenueCat</strong> : vérifie l'état de ton abonnement.</li>
       <li><strong>Apple</strong> : paiement, dictée (quand elle ne se fait pas sur le téléphone), Face ID et rappels.</li>
     </ul>
-    <p>OpenRouter, Anthropic et RevenueCat sont situés aux États-Unis : ta soirée (pour l'IA) et l'état de ton abonnement y sont donc transmis. Les échanges avec eux sont chiffrés.</p>
+    <p>OpenRouter, Anthropic, Amazon, Google et RevenueCat sont des entreprises américaines : ta soirée (pour l'IA) et l'état de ton abonnement y sont donc transmis. Les échanges avec eux sont chiffrés.</p>
 
     <h2>Âge</h2>
     <p>Démêle est réservée aux personnes de 16 ans et plus. Si l'année de naissance indiquée donne moins de 16 ans, l'app s'arrête dès l'accueil.</p>
