@@ -1,0 +1,191 @@
+/* Page d'accueil : le ciel du soir de l'app, ses paysages, ses cartes. */
+:root {
+  --encre-profonde: #1F2A35;
+  --creme: #FFF1E0;
+  --lourd: #6B7A8F; --bof: #9AA7B8; --neutre: #C8BFAD; --bien: #E3C27C; --leger: #EBA567;
+  --travail: #5D86B8; --relations: #C97B97; --sante: #4E9E8F;
+}
+
+.accueil { overflow-x: hidden; }
+
+/* ——— Le ciel ——— */
+.scene {
+  position: relative;
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  background: linear-gradient(180deg, var(--encre-profonde) 0%, #2B3746 40%, #3F4C5E 100%);
+  color: var(--ivoire);
+  overflow: hidden;
+}
+.scene .poussiere, .scene .constellation { position: absolute; inset: 0; pointer-events: none; }
+.scene .poussiere span { position: absolute; border-radius: 50%; background: var(--ivoire); }
+
+.scene header.haut { position: relative; z-index: 3; max-width: 1080px; width: 100%; margin: 0 auto; padding: 20px; }
+.scene header.haut .marque { color: var(--ivoire); }
+.scene header.haut .marque img { filter: brightness(0) invert(1); opacity: .95; }
+.scene header.haut nav a { color: rgba(250,248,243,.75); }
+.scene header.haut nav a:hover { color: var(--ivoire); }
+
+.scene .date { position: relative; z-index: 3; max-width: 1080px; width: 100%; margin: 4px auto 0; padding: 0 20px; }
+.scene .date strong { display: block; font-size: 15px; font-weight: 600; letter-spacing: .2px; }
+.fil-rouge { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 13px; color: rgba(250,248,243,.8); }
+.fil-rouge svg { width: 22px; height: 12px; }
+
+.scene .titre {
+  position: relative; z-index: 3; text-align: center;
+  padding: 9vh 24px 0; max-width: 640px; margin: 0 auto;
+}
+.scene h1 {
+  font-size: clamp(36px, 7vw, 60px); line-height: 1.05; letter-spacing: -1px; margin: 0 0 16px; font-weight: 650;
+}
+.scene .titre p { font-size: clamp(17px, 2.2vw, 20px); margin: 0 auto; max-width: 520px; color: rgba(250,248,243,.88); }
+
+.pastille-store {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+  padding: 10px 18px 10px 14px; border-radius: 999px;
+  background: rgba(250,248,243,.12); border: 1px solid rgba(250,248,243,.28);
+  font-size: 14px; color: var(--ivoire); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.pastille-store .point { width: 8px; height: 8px; border-radius: 50%; background: var(--leger); box-shadow: 0 0 0 4px rgba(235,165,103,.25); }
+
+.constellation line { stroke: var(--creme); stroke-width: 1.4; stroke-linecap: round; opacity: .75; filter: drop-shadow(0 0 3px rgba(255,241,224,.55)); }
+.constellation circle { fill: var(--creme); }
+.constellation .nom { fill: var(--creme); font-size: 10px; letter-spacing: 4px; font-weight: 300; opacity: .8; }
+
+/* Le paysage, posé en bas du ciel, et son premier plan jusqu'en bas. */
+.scene .paysage { position: relative; margin-top: auto; z-index: 1; }
+/* Le ciel se fond dans le haut du dessin, sans ligne visible. */
+.scene .paysage::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: 38vh;
+  background: linear-gradient(180deg, rgba(146,161,181,0), #92A1B5);
+}
+.scene .paysage img { display: block; width: 100%; height: clamp(260px, 42vw, 520px); object-fit: cover; object-position: 50% 62%; }
+.scene .sol { background: #2b3747; height: 72px; position: relative; z-index: 1; }
+
+/* La carte du soir, comme sur l'accueil de l'app. */
+.carte-soir {
+  position: absolute; z-index: 4; left: 50%; bottom: 24px; transform: translateX(-50%);
+  width: min(420px, calc(100% - 32px));
+  background: rgba(255,255,255,.9); color: var(--encre);
+  border-radius: 22px; padding: 18px 18px 16px;
+  box-shadow: 0 10px 40px rgba(31,42,53,.25);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.carte-soir .question { font-size: 17px; font-weight: 600; margin: 0 0 12px; }
+.champ {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--ligne); border-radius: 14px; padding: 12px 12px 12px 14px; background: #fff;
+  color: #7C8792; font-size: 15px;
+}
+.champ .ecrit { flex: 1; min-height: 22px; color: var(--encre); }
+.champ .curseur { display: inline-block; width: 1.5px; height: 17px; background: var(--encre); vertical-align: -3px; margin-left: 1px; animation: clignote 1s steps(1) infinite; }
+.champ .micro { width: 34px; height: 34px; border-radius: 50%; background: var(--sable); display: grid; place-items: center; flex: none; }
+@keyframes clignote { 50% { opacity: 0; } }
+
+/* ——— Les sections ——— */
+.bloc { max-width: 1080px; margin: 0 auto; padding: 96px 20px; }
+.surtitre { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--ardoise); margin: 0 0 12px; }
+.bloc h2 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.1; letter-spacing: -.5px; margin: 0 0 14px; }
+.bloc .chapeau { font-size: 18px; color: var(--ardoise); max-width: 560px; margin: 0 0 48px; }
+
+/* Un soir, trois gestes */
+.gestes { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+.geste .numero { font-size: 13px; color: var(--ardoise); margin-bottom: 6px; }
+.geste h3 { font-size: 21px; margin: 0 0 6px; }
+.geste > p { color: var(--ardoise); font-size: 16px; margin: 0 0 18px; }
+.ecran {
+  background: #fff; border: 1px solid var(--ligne); border-radius: 20px; padding: 18px;
+  box-shadow: 0 4px 18px rgba(41,52,63,.06); font-size: 15px;
+}
+.ecran .petit { font-size: 12px; color: var(--ardoise); margin: 0 0 8px; letter-spacing: .2px; }
+.ecran .texte { margin: 0; line-height: 1.5; }
+.humeurs { display: flex; gap: 8px; margin-top: 14px; }
+.humeurs span { display: grid; justify-items: center; gap: 4px; font-size: 11px; color: var(--ardoise); }
+.humeurs i { width: 22px; height: 22px; border-radius: 50%; display: block; }
+.humeurs .choisie i { box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--encre); }
+.humeurs .choisie { color: var(--encre); font-weight: 600; }
+.synthese { background: var(--horizon, #DCE6EB); border-radius: 14px; padding: 14px; margin: 0; line-height: 1.5; }
+.fil { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--ivoire); border: 1px solid var(--ligne); }
+.fil .rond { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--encre); flex: none; display: grid; place-items: center; }
+.fil.tire .rond { background: var(--encre); }
+.boutons { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.boutons span { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--ligne); font-size: 13px; }
+.boutons span:first-child { background: var(--encre); color: var(--ivoire); border-color: var(--encre); }
+
+/* Ton ciel se remplit */
+.nuit { background: linear-gradient(180deg, var(--encre-profonde), #2A3646); color: var(--ivoire); position: relative; overflow: hidden; }
+.nuit .surtitre { color: rgba(250,248,243,.6); }
+.nuit .chapeau { color: rgba(250,248,243,.78); }
+.trois { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 56px; }
+.trois h3 { font-size: 17px; margin: 12px 0 4px; }
+.trois p { margin: 0; font-size: 15px; color: rgba(250,248,243,.72); }
+.trois svg { height: 54px; width: auto; display: block; }
+.trois svg line { stroke: var(--creme); stroke-width: 1.2; opacity: .7; }
+.trois svg circle { fill: var(--creme); }
+.trois svg text { fill: var(--creme); font-size: 8px; letter-spacing: 3px; opacity: .75; }
+.paysages {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+  margin: 0 -20px; padding: 0 20px 12px; scrollbar-width: none;
+}
+.paysages::-webkit-scrollbar { display: none; }
+.paysages figure { margin: 0; flex: 0 0 min(260px, 70vw); scroll-snap-align: start; }
+.paysages img { width: 100%; aspect-ratio: 5 / 3; object-fit: cover; border-radius: 16px; display: block; }
+.paysages figcaption { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; color: rgba(250,248,243,.7); }
+
+/* Ce qui revient : un bilan */
+.deux { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.deux .chapeau { margin-bottom: 20px; }
+.liste-douce { list-style: none; padding: 0; margin: 0; color: var(--ardoise); }
+.liste-douce li { padding: 10px 0; border-top: 1px solid var(--ligne); }
+.liste-douce li:last-child { border-bottom: 1px solid var(--ligne); }
+.bilan { padding: 22px; }
+.bilan .resume { font-size: 18px; font-weight: 600; line-height: 1.35; margin: 0 0 18px; }
+.bilan h4 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--ardoise); font-weight: 500; margin: 20px 0 10px; }
+.semaine { display: flex; justify-content: space-between; }
+.semaine span { display: grid; justify-items: center; gap: 6px; font-size: 12px; color: var(--ardoise); }
+.semaine i { width: 24px; height: 24px; border-radius: 50%; display: block; }
+.semaine .vide i { border: 1.5px dashed var(--ligne); }
+.place { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 15px; }
+.place b { width: 22px; height: 22px; border-radius: 6px; flex: none; }
+.place em { margin-left: auto; font-style: normal; color: var(--ardoise); font-size: 14px; }
+.revient { background: var(--ivoire); border-radius: 14px; padding: 14px; margin: 0; }
+
+/* Sans pression */
+.promesses { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.promesse { background: #fff; border: 1px solid var(--ligne); border-radius: 18px; padding: 20px; }
+.promesse svg { width: 26px; height: 26px; stroke: var(--encre); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.promesse h3 { font-size: 16px; margin: 12px 0 4px; }
+.promesse p { margin: 0; font-size: 14px; color: var(--ardoise); }
+.lien-doux { display: inline-block; margin-top: 24px; color: var(--ardoise); font-size: 15px; }
+
+/* Le matin, pour finir */
+.matin { position: relative; text-align: center; background: linear-gradient(180deg, var(--ivoire) 0%, #C6D9E4 45%); padding-top: 96px; }
+.matin h2 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.1; letter-spacing: -.5px; margin: 0 auto 12px; max-width: 640px; padding: 0 20px; }
+.matin p { color: var(--ardoise); margin: 0 auto; max-width: 460px; padding: 0 20px; }
+.matin .pastille-store { color: var(--encre); background: rgba(255,255,255,.6); border-color: rgba(41,52,63,.15); }
+.matin img { display: block; width: 100%; height: clamp(220px, 36vw, 440px); object-fit: cover; object-position: 50% 70%; margin-top: 40px; }
+.matin + .pied { background: #3c5265; color: rgba(250,248,243,.8); }
+.pied { padding: 28px 20px 40px; }
+.pied nav { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; }
+.pied a { color: inherit; white-space: nowrap; }
+.pied .signature { max-width: 1080px; margin: 14px auto 0; font-size: 13px; opacity: .7; }
+
+/* Apparitions douces au défilement */
+.apparait { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+.apparait.vu { opacity: 1; transform: none; }
+
+@media (max-width: 860px) {
+  .gestes, .trois, .deux { grid-template-columns: 1fr; }
+  .gestes { gap: 40px; }
+  .deux { gap: 32px; }
+  .promesses { grid-template-columns: 1fr 1fr; }
+  .bloc { padding: 72px 20px; }
+}
+@media (max-width: 480px) {
+  .promesses { grid-template-columns: 1fr; }
+  .scene .sol { height: 128px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apparait { opacity: 1; transform: none; transition: none; }
+  .champ .curseur { animation: none; }
+}

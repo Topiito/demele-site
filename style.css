@@ -64,7 +64,7 @@ footer.bas {
   border-top: 1px solid var(--ligne); margin-top: 56px; padding: 24px 0 40px;
   color: var(--ardoise); font-size: 14px;
 }
-footer.bas a { color: var(--ardoise); margin-right: 16px; }
+footer.bas a { color: var(--ardoise); margin-right: 16px; white-space: nowrap; display: inline-block; }
 
 @media (max-width: 480px) {
   header.haut nav a { margin-left: 12px; font-size: 14px; }

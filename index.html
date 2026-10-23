@@ -2,56 +2,298 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Démêle · Journal du soir</title>
-  <meta name="description" content="Démêle, un journal du soir pour raconter ta journée, à l'écrit ou à la voix, et clarifier tes pensées.">
+  <meta name="description" content="Démêle, un journal du soir pour raconter ta journée, à l'écrit ou à la voix, et clarifier tes pensées. Chaque soirée allume une étoile dans ton ciel.">
+  <meta name="theme-color" content="#1F2A35">
   <link rel="icon" href="images/icon.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="accueil.css">
 </head>
-<body>
-  <div class="page">
+<body class="accueil">
+
+  <!-- Le ciel du soir, comme l'accueil de l'app -->
+  <section class="scene" id="scene">
+    <div class="poussiere" id="poussiere" aria-hidden="true"></div>
+    <svg class="constellation" id="constellation" aria-hidden="true"></svg>
+
     <header class="haut">
       <a class="marque" href="./"><img src="images/logo-symbol.png" alt="">Démêle</a>
       <nav><a href="confidentialite/">Confidentialité</a><a href="aide/">Aide</a></nav>
     </header>
-  </div>
 
-  <section class="ciel">
-    <span class="etoile" style="top:18%;left:14%"></span>
-    <span class="etoile" style="top:30%;left:24%"></span>
-    <span class="etoile" style="top:12%;left:70%"></span>
-    <span class="etoile" style="top:24%;left:82%"></span>
-    <span class="etoile" style="top:40%;left:76%"></span>
-    <span class="etoile" style="top:60%;left:8%"></span>
-    <img class="icone" src="images/icon.png" alt="Icône de Démêle">
-    <h1>Démêle tes journées</h1>
-    <p>Un journal du soir pour raconter ta journée, à l'écrit ou à la voix, et clarifier tes pensées, positives comme difficiles.</p>
-  </section>
+    <div class="date" aria-hidden="true">
+      <strong id="date">Ce soir</strong>
+      <span class="fil-rouge">
+        <svg viewBox="0 0 22 12"><path d="M1 8 C5 8 6 2 10 2 C13 2 13 7 10.5 7 C8 7 9 3 13 4 C16 5 17 8 21 8" fill="none" stroke="#E8907E" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Fil rouge · Me coucher plus tôt
+      </span>
+    </div>
 
-  <div class="page">
-    <div class="cartes">
-      <div class="carte">
-        <h3>Raconter, sans pression</h3>
-        <p>Quelques mots le soir, écrits ou dictés. Chaque soirée enregistrée allume une étoile dans ton ciel.</p>
-      </div>
-      <div class="carte">
-        <h3>Prendre du recul</h3>
-        <p>L'IA t'aide à y voir plus clair, sans juger, avec tes propres mots.</p>
-      </div>
-      <div class="carte">
-        <h3>Un fil pour demain</h3>
-        <p>Choisis un petit pas à faire demain, et retrouve-le le matin.</p>
-      </div>
-      <div class="carte">
-        <h3>Voir ce qui revient</h3>
-        <p>Les bilans de la semaine et du mois montrent les sujets et les situations qui reviennent.</p>
+    <div class="titre">
+      <h1>Démêle tes journées.</h1>
+      <p>Un journal du soir pour raconter ta journée, à l'écrit ou à la voix, et y voir plus clair. Chaque soirée allume une étoile.</p>
+      <span class="pastille-store"><span class="point"></span>Bientôt sur l'App Store</span>
+    </div>
+
+    <div class="paysage" aria-hidden="true">
+      <img src="images/paysages/6-soir.svg" alt="">
+    </div>
+    <div class="sol" aria-hidden="true"></div>
+
+    <div class="carte-soir" aria-hidden="true">
+      <p class="question">Qu'as-tu envie de poser ce soir ?</p>
+      <div class="champ">
+        <span class="ecrit"><span id="tape"></span><span class="curseur"></span></span>
+        <span class="micro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#29343F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg>
+        </span>
       </div>
     </div>
-    <p class="discret">Démêle sera bientôt disponible sur l'App Store.</p>
+  </section>
 
-    <footer class="bas">
-      <a href="confidentialite/">Politique de confidentialité</a><a href="aide/">Aide et contact</a><a href="mentions-legales/">Mentions légales</a>
-    </footer>
-  </div>
+  <!-- Un soir, trois gestes -->
+  <section class="bloc">
+    <p class="surtitre">Le soir</p>
+    <h2>Trois gestes, quelques minutes.</h2>
+    <p class="chapeau">Pas de page blanche à remplir, pas de série à tenir. Juste ce qui s'est passé aujourd'hui, et un peu de recul avant de dormir.</p>
+
+    <div class="gestes">
+      <div class="geste apparait">
+        <div class="numero">1</div>
+        <h3>Raconte</h3>
+        <p>Quelques mots, écrits ou dictés. Les bons moments comme les plus lourds.</p>
+        <div class="ecran">
+          <p class="petit">Ton écrit</p>
+          <p class="texte">Réunion tendue ce matin, je n'ai rien dit alors que j'aurais voulu. Ce soir j'ai rappelé Léa, on a ri comme avant.</p>
+          <div class="humeurs">
+            <span><i style="background:var(--lourd)"></i>Lourd</span>
+            <span><i style="background:var(--bof)"></i>Bof</span>
+            <span><i style="background:var(--neutre)"></i>Neutre</span>
+            <span class="choisie"><i style="background:var(--bien)"></i>Bien</span>
+            <span><i style="background:var(--leger)"></i>Léger</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="geste apparait">
+        <div class="numero">2</div>
+        <h3>Démêle</h3>
+        <p>L'IA te rend ce que tu as dit, plus clairement. Sans juger, avec tes mots.</p>
+        <div class="ecran">
+          <p class="petit">Faire le point</p>
+          <p class="synthese">Ta journée a eu deux visages : une réunion où tu t'es tu, et une soirée qui t'a fait du bien. Ce qui reste, c'est surtout ce que tu n'as pas pu dire.</p>
+        </div>
+      </div>
+
+      <div class="geste apparait">
+        <div class="numero">3</div>
+        <h3>Tire un fil</h3>
+        <p>Un seul petit pas pour demain. Le matin, il t'attend sur l'accueil.</p>
+        <div class="ecran">
+          <p class="petit">Hier soir, tu as choisi :</p>
+          <div class="fil"><span class="rond"></span>Noter ce que j'aurais voulu dire en réunion</div>
+          <div class="boutons"><span>C'est fait</span><span>Pas encore</span><span>Laisser de côté</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Le ciel se remplit -->
+  <section class="nuit">
+    <div class="bloc">
+      <p class="surtitre">Ton ciel</p>
+      <h2>Chaque soirée allume une étoile.</h2>
+      <p class="chapeau">Ton ciel se remplit sans pression : une soirée manquée n'éteint rien. Il garde simplement la trace de ce que tu as déposé.</p>
+
+      <div class="trois">
+        <div class="apparait">
+          <svg viewBox="0 0 60 54"><circle cx="30" cy="27" r="3"/><circle cx="30" cy="27" r="9" fill="none" stroke="#FFF1E0" stroke-opacity=".25"/></svg>
+          <h3>Une soirée, une étoile</h3>
+          <p>Elle s'allume à sa place, et n'en bouge plus.</p>
+        </div>
+        <div class="apparait">
+          <svg viewBox="0 0 120 54"><line x1="6" y1="18" x2="24" y2="34"/><line x1="24" y1="34" x2="46" y2="44"/><line x1="46" y1="44" x2="70" y2="46"/><line x1="70" y1="46" x2="92" y2="36"/><line x1="92" y1="36" x2="112" y2="14"/><circle cx="6" cy="18" r="2.4"/><circle cx="24" cy="34" r="2.4"/><circle cx="46" cy="44" r="2.4"/><circle cx="70" cy="46" r="2.4"/><circle cx="92" cy="36" r="2.4"/><circle cx="112" cy="14" r="2.4"/></svg>
+          <h3>Une semaine, une constellation</h3>
+          <p>Ton bilan lui donne un nom. Tu peux le changer.</p>
+        </div>
+        <div class="apparait">
+          <svg viewBox="0 0 120 54"><path d="M2 46 L22 26 L34 34 L54 12 L72 30 L84 22 L118 46 Z" fill="none" stroke="#FFF1E0" stroke-opacity=".7" stroke-width="1.2" stroke-linejoin="round"/><circle cx="96" cy="14" r="5" fill="none" stroke="#EBA567" stroke-width="1.2"/></svg>
+          <h3>Un mois, un paysage</h3>
+          <p>Toutes les quatre semaines, un nouveau décor sous tes étoiles.</p>
+        </div>
+      </div>
+
+      <div class="paysages" aria-label="Les paysages de Démêle">
+        <figure><img src="images/paysages/1-soir.svg" alt="Col enneigé au crépuscule" loading="lazy"><figcaption>Col enneigé</figcaption></figure>
+        <figure><img src="images/paysages/6-soir.svg" alt="Marais au crépuscule" loading="lazy"><figcaption>Marais</figcaption></figure>
+        <figure><img src="images/paysages/5-soir.svg" alt="Rivière au crépuscule" loading="lazy"><figcaption>Rivière</figcaption></figure>
+        <figure><img src="images/paysages/9-soir.svg" alt="Dunes au crépuscule" loading="lazy"><figcaption>Dunes</figcaption></figure>
+        <figure><img src="images/paysages/7-soir.svg" alt="Vallée boisée au crépuscule" loading="lazy"><figcaption>Vallée boisée</figcaption></figure>
+        <figure><img src="images/paysages/10-soir.svg" alt="Archipel au crépuscule" loading="lazy"><figcaption>Archipel</figcaption></figure>
+        <figure><img src="images/paysages/8-soir.svg" alt="Anse aux pins au crépuscule" loading="lazy"><figcaption>Anse aux pins</figcaption></figure>
+        <figure><img src="images/paysages/11-soir.svg" alt="Savane au crépuscule" loading="lazy"><figcaption>Savane</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce qui revient -->
+  <section class="bloc">
+    <div class="deux">
+      <div>
+        <p class="surtitre">Les bilans</p>
+        <h2>Vois ce qui revient.</h2>
+        <p class="chapeau">Chaque semaine et chaque mois, un bilan relie tes soirées. Il ne tranche pas : il te pose la question, et c'est toi qui dis si ça te correspond.</p>
+        <ul class="liste-douce">
+          <li>L'humeur de chaque soir, que tu choisis toi-même</li>
+          <li>Ce qui a pris de la place, en nombre de soirs</li>
+          <li>Ce qui s'est allégé, et les fils que tu as tirés</li>
+          <li>Quand un sujet revient, un fil rouge pour les semaines qui viennent</li>
+        </ul>
+      </div>
+
+      <div class="ecran bilan apparait">
+        <p class="petit">Ta semaine</p>
+        <p class="resume">Une semaine chargée au travail, adoucie par les soirées avec tes proches.</p>
+        <h4>Tes soirs</h4>
+        <div class="semaine">
+          <span><i style="background:var(--bof)"></i>L</span>
+          <span><i style="background:var(--lourd)"></i>M</span>
+          <span><i style="background:var(--neutre)"></i>M</span>
+          <span><i style="background:var(--bien)"></i>J</span>
+          <span class="vide"><i></i>V</span>
+          <span><i style="background:var(--leger)"></i>S</span>
+          <span><i style="background:var(--bien)"></i>D</span>
+        </div>
+        <h4>Ce qui a pris de la place</h4>
+        <div class="place"><b style="background:var(--travail)"></b>Travail<em>4 soirs</em></div>
+        <div class="place"><b style="background:var(--relations)"></b>Relations<em>3 soirs</em></div>
+        <h4>Ce qui revient</h4>
+        <p class="revient">Est-ce que tu as souvent l'impression de garder pour toi ce que tu penses au travail ?</p>
+        <div class="boutons"><span>Ça me correspond</span><span>Corriger</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sans pression -->
+  <section class="bloc" style="padding-top:0">
+    <p class="surtitre">En confiance</p>
+    <h2>Ton journal reste à toi.</h2>
+    <p class="chapeau">Ce que tu écris ne sert qu'à toi. Rien n'est vendu, rien n'est gardé ailleurs que sur ton téléphone.</p>
+    <div class="promesses">
+      <div class="promesse apparait">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M3 3l18 18"/></svg>
+        <h3>Pas de compte</h3>
+        <p>Ni e-mail, ni mot de passe. Tu ouvres l'app, tu écris.</p>
+      </div>
+      <div class="promesse apparait">
+        <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg>
+        <h3>Sur ton téléphone</h3>
+        <p>Tes soirées restent sur ton iPhone. Aucune sauvegarde en ligne.</p>
+      </div>
+      <div class="promesse apparait">
+        <svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 19h14"/></svg>
+        <h3>Une IA qui ne garde rien</h3>
+        <p>Elle lit ta soirée pour te répondre, puis l'oublie. Jamais utilisée pour l'entraîner.</p>
+      </div>
+      <div class="promesse apparait">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <h3>Verrouillé si tu veux</h3>
+        <p>Face ID ou ton code, avant d'ouvrir ton journal.</p>
+      </div>
+    </div>
+    <a class="lien-doux" href="confidentialite/">Tout savoir sur tes données →</a>
+  </section>
+
+  <!-- Le matin -->
+  <section class="matin">
+    <p class="surtitre">Le matin</p>
+    <h2>Le soir tu démêles, le matin tu avances.</h2>
+    <p>Démêle arrive bientôt sur iPhone. Gratuit pour écrire, avec Premium pour l'IA et les bilans.</p>
+    <span class="pastille-store"><span class="point"></span>Bientôt sur l'App Store</span>
+    <img src="images/paysages/6-matin.svg" alt="" aria-hidden="true">
+  </section>
+  <footer class="pied">
+    <nav>
+      <a href="confidentialite/">Politique de confidentialité</a>
+      <a href="mentions-legales/">Mentions légales</a>
+      <a href="aide/">Aide et contact</a>
+    </nav>
+    <p class="signature">Démêle · un journal du soir, fait en France.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var calme = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // La date du jour, comme en haut de l'accueil de l'app.
+      var d = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+      document.getElementById('date').textContent = d.charAt(0).toUpperCase() + d.slice(1);
+
+      // La poussière d'étoiles : 90 points, les mêmes que dans l'app.
+      var p = document.getElementById('poussiere');
+      for (var i = 0; i < 90; i++) {
+        var h = function (n) { var v = Math.sin(i * 127.1 + n * 311.7) * 43758.5453; return v - Math.floor(v); };
+        var s = document.createElement('span');
+        var t = h(3) > 0.8 ? 2.5 : 1.5;
+        s.style.cssText = 'left:' + (2 + h(1) * 96) + '%;top:' + (2 + h(2) * 60) + '%;width:' + t + 'px;height:' + t + 'px;opacity:' + (0.15 + h(4) * 0.35);
+        p.appendChild(s);
+      }
+
+      // La constellation de la semaine : les étoiles s'allument une à une, puis les traits.
+      var svg = document.getElementById('constellation'), scene = document.getElementById('scene');
+      // Le Lion, une des formes de l'app : 7 étoiles, une boucle et une queue.
+      var PTS = [[0.98, 0.35], [0.82, 0.15], [0.66, 0.25], [0.62, 0.5], [0.4, 0.45], [0.12, 0.55], [0.3, 0.8]];
+      var TRAITS = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]];
+      var NS = 'http://www.w3.org/2000/svg';
+      function dessiner() {
+        // Sur grand écran, en haut à droite, à côté du titre ; sinon, centrée entre la date et le titre.
+        var L = scene.clientWidth, large = L > 1240;
+        var date = document.querySelector('.scene .date'), basDate = date.offsetTop + date.offsetHeight;
+        var titre = document.querySelector('.scene .titre');
+        var w = large ? Math.min(L * 0.2, 300) : Math.min(L * 0.62, 340), hh = w * 0.55;
+        var x0 = large ? L * 0.95 - w : (L - w) / 2, y0 = large ? 92 : basDate + 18;
+        titre.style.paddingTop = large ? '' : y0 + hh + 48 - basDate + 'px';
+        var H = scene.clientHeight;
+        svg.setAttribute('viewBox', '0 0 ' + L + ' ' + H);
+        svg.innerHTML = '';
+        var pts = PTS.map(function (q) { return [x0 + q[0] * w, y0 + q[1] * hh]; });
+        TRAITS.forEach(function (t, k) {
+          var a = pts[t[1]], b = pts[t[0]], l = document.createElementNS(NS, 'line');
+          l.setAttribute('x1', b[0]); l.setAttribute('y1', b[1]); l.setAttribute('x2', a[0]); l.setAttribute('y2', a[1]);
+          var len = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          l.style.strokeDasharray = len; l.style.strokeDashoffset = calme ? 0 : len;
+          if (!calme) l.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 500, delay: 2600 + k * 360, fill: 'forwards', easing: 'ease-out' });
+          svg.appendChild(l);
+        });
+        pts.forEach(function (a, k) {
+          var c = document.createElementNS(NS, 'circle');
+          c.setAttribute('cx', a[0]); c.setAttribute('cy', a[1]); c.setAttribute('r', large ? 2.6 : 2.2);
+          if (!calme) c.animate([{ opacity: 0, r: 0 }, { opacity: 1, r: 6 }, { opacity: 1, r: large ? 2.6 : 2.2 }], { duration: 700, delay: 300 + k * 320, fill: 'backwards', easing: 'ease-out' });
+          if (!calme && k === PTS.length - 1) c.animate([{ opacity: 1 }, { opacity: 0.45 }, { opacity: 1 }], { duration: 2400, delay: 3200, iterations: Infinity });
+          svg.appendChild(c);
+        });
+        var nom = document.createElementNS(NS, 'text');
+        nom.setAttribute('x', x0 + w / 2); nom.setAttribute('y', y0 + hh + 22); nom.setAttribute('text-anchor', 'middle');
+        nom.setAttribute('class', 'nom'); nom.textContent = 'LES RETROUVAILLES';
+        if (!calme) nom.animate([{ opacity: 0 }, { opacity: 0.8 }], { duration: 1200, delay: 5600, fill: 'both' });
+        svg.appendChild(nom);
+      }
+      dessiner();
+      var attente; window.addEventListener('resize', function () { clearTimeout(attente); attente = setTimeout(dessiner, 150); });
+
+      // Quelques mots qui s'écrivent dans la carte du soir.
+      var phrase = "Ce soir j'ai enfin rappelé Léa…", el = document.getElementById('tape'), n = 0;
+      if (calme) el.textContent = phrase;
+      else setTimeout(function taper() { el.textContent = phrase.slice(0, ++n); if (n < phrase.length) setTimeout(taper, 55 + Math.random() * 60); }, 1400);
+
+      // Les blocs apparaissent doucement en arrivant à l'écran.
+      var vus = document.querySelectorAll('.apparait');
+      if ('IntersectionObserver' in window && !calme) {
+        var o = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('vu'); o.unobserve(e.target); } }); }, { threshold: 0.2 });
+        vus.forEach(function (v) { o.observe(v); });
+      } else vus.forEach(function (v) { v.classList.add('vu'); });
+    })();
+  </script>
 </body>
 </html>
