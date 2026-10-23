@@ -1,0 +1,76 @@
+/* Couleurs du design system Démêle (fond ivoire, encre, ardoise). */
+:root {
+  --ivoire: #FAF8F3;
+  --sable: #E9DDC9;
+  --encre: #29343F;
+  --ardoise: #606C78;
+  --ligne: #E4DED3;
+  --corail: #E8907E;
+  --nuit: #1F2A35;
+  --ciel: #92A1B5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ivoire);
+  color: var(--encre);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+a { color: var(--encre); }
+
+.page { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+
+header.haut {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0;
+}
+header.haut .marque { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 19px; }
+header.haut .marque img { height: 22px; }
+header.haut nav a { margin-left: 18px; color: var(--ardoise); text-decoration: none; font-size: 15px; }
+header.haut nav a:hover { color: var(--encre); }
+
+/* Accueil : un ciel du soir avec quelques étoiles. */
+.ciel {
+  background: linear-gradient(180deg, var(--nuit) 0%, var(--ciel) 100%);
+  color: var(--ivoire);
+  text-align: center;
+  padding: 72px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.ciel .etoile { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #FFF1E0; opacity: .8; }
+.ciel img.icone { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.ciel h1 { font-size: 38px; line-height: 1.15; margin: 24px 0 12px; letter-spacing: -0.3px; }
+.ciel p { font-size: 19px; max-width: 520px; margin: 0 auto; opacity: .92; }
+
+h1 { font-size: 30px; line-height: 1.15; letter-spacing: -0.3px; margin: 32px 0 8px; }
+h2 { font-size: 20px; margin: 36px 0 8px; }
+.discret { color: var(--ardoise); font-size: 15px; }
+
+.cartes { display: grid; gap: 14px; margin: 40px 0; }
+.carte {
+  background: #fff; border: 1px solid var(--ligne); border-radius: 16px;
+  padding: 18px 20px; box-shadow: 0 2px 8px rgba(41,52,63,.06);
+}
+.carte h3 { margin: 0 0 4px; font-size: 17px; }
+.carte p { margin: 0; color: var(--ardoise); font-size: 15px; }
+
+footer.bas {
+  border-top: 1px solid var(--ligne); margin-top: 56px; padding: 24px 0 40px;
+  color: var(--ardoise); font-size: 14px;
+}
+footer.bas a { color: var(--ardoise); margin-right: 16px; }
+
+@media (max-width: 480px) {
+  header.haut nav a { margin-left: 12px; font-size: 14px; }
+  .ciel h1 { font-size: 30px; }
+}
+
+h3 { font-size: 17px; margin: 24px 0 6px; }
+ul { padding-left: 22px; }
+li { margin: 4px 0; }

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confidentialité · Démêle</title>
+  <meta name="description" content="Politique de confidentialité de l'app Démêle : quelles données, pourquoi, où elles vont et combien de temps.">
+  <link rel="icon" href="../images/icon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="haut">
+      <a class="marque" href="../"><img src="../images/logo-symbol.png" alt="">Démêle</a>
+      <nav><a href="../confidentialite/">Confidentialité</a><a href="../aide/">Aide</a></nav>
+    </header>
+
+    <h1>Politique de confidentialité</h1>
+    <p class="discret">Dernière mise à jour : 23 octobre 2026</p>
+
+    <p>Démêle est un journal du soir. Ce que tu y écris t'appartient. Cette page explique, simplement, quelles données l'app utilise, pourquoi, où elles vont et combien de temps elles sont gardées.</p>
+
+    <h2>Qui est responsable</h2>
+    <p>L'app Démêle est éditée par Da Rocha Julien, responsable du traitement des données. Contact : <a href="mailto:contact@demele.app">contact@demele.app</a>.</p>
+
+    <h2>Pas de compte</h2>
+    <p>Démêle ne te demande ni compte, ni adresse e-mail, ni mot de passe. Il n'y a aucune sauvegarde en ligne de ton journal.</p>
+
+    <h2>Ce qui reste sur ton téléphone</h2>
+    <p>Ces données sont gardées uniquement dans la mémoire de ton iPhone. Personne d'autre n'y a accès, pas même nous.</p>
+    <ul>
+      <li>tes soirées : ce que tu écris ou dictes, ce que tu y ajoutes, l'humeur que tu choisis ;</li>
+      <li>ton brouillon en cours ;</li>
+      <li>tes fils (les petits pas pour demain) et ton fil rouge ;</li>
+      <li>tes bilans de la semaine et du mois, et les noms de tes constellations ;</li>
+      <li>les réponses de l'IA à tes soirées ;</li>
+      <li>ton prénom (facultatif), ton année de naissance, tes réponses aux questions de bienvenue et ton accord pour l'analyse de tes écrits ;</li>
+      <li>tes réglages (rappels, verrou Face ID).</li>
+    </ul>
+    <p><strong>Durée :</strong> tant que tu ne les effaces pas. Tu peux supprimer une soirée à tout moment depuis son détail dans ton Journal, tout effacer avec « Effacer toutes mes données » dans les réglages, ou supprimer l'app, ce qui efface tout.</p>
+
+    <h2>Ce qui part vers un serveur, et pourquoi</h2>
+    <h3>Pour que l'IA te réponde</h3>
+    <p>Quand tu demandes à l'IA de t'aider (faire le point, approfondir, te proposer un fil, écrire tes bilans), l'app envoie :</p>
+    <ul>
+      <li>le texte de ta soirée, ses ajouts, sa date et l'humeur choisie ;</li>
+      <li>pour les bilans et pour approfondir : le résumé de tes semaines précédentes, tes fils et ton fil rouge ;</li>
+      <li>une seule information sur toi : si tu as moins de 18 ans ou non, pour adapter les réponses.</li>
+    </ul>
+    <p>L'IA ne reçoit <strong>jamais</strong> ton prénom ni ton année de naissance.</p>
+    <p>Le chemin est le suivant : ton iPhone envoie la demande, protégée (chiffrée), à notre relais, hébergé chez <strong>Supabase</strong>. Le relais la transmet au service <strong>OpenRouter</strong>, qui la confie à <strong>Claude</strong>, l'IA d'<strong>Anthropic</strong>. La réponse revient par le même chemin.</p>
+    <p><strong>Durée :</strong> aucun d'eux ne garde ta soirée. Le relais n'a pas de base de données et n'enregistre pas le contenu. Nous utilisons uniquement les chemins d'OpenRouter où rien n'est conservé ni réutilisé (« zéro conservation »). Tes écrits ne servent jamais à entraîner l'IA.</p>
+    <p><strong>Base :</strong> ton accord, donné à l'écran « Tes écrits et l'IA ». Sans l'IA, ton journal fonctionne quand même.</p>
+
+    <h3>Pour la dictée</h3>
+    <p>Quand tu dictes ta soirée, c'est la reconnaissance vocale de ton iPhone qui transforme ta voix en texte. Quand ton iPhone sait le faire tout seul, le son ne quitte pas le téléphone. Sinon, il est envoyé à <strong>Apple</strong> pour être transcrit, selon la politique de confidentialité d'Apple. Démêle ne garde aucun enregistrement de ta voix : seul le texte est gardé, sur ton téléphone.</p>
+
+    <h3>Pour l'abonnement Premium</h3>
+    <p>Le paiement est entièrement géré par <strong>Apple</strong> : nous ne voyons jamais tes coordonnées bancaires, ni ton nom, ni ton identifiant Apple.</p>
+    <p>Pour savoir si ton abonnement est actif, l'app utilise le service <strong>RevenueCat</strong>. Il reçoit un identifiant anonyme créé par l'app, l'historique de tes achats dans Démêle et des informations techniques (modèle de l'iPhone, version du système et de l'app). Il ne reçoit jamais tes écrits.</p>
+    <p><strong>Durée :</strong> le temps nécessaire à la gestion de ton abonnement, selon la politique de RevenueCat.</p>
+
+    <h2>Ce qui ne quitte pas ton téléphone</h2>
+    <ul>
+      <li><strong>Rappels :</strong> ils sont programmés sur ton iPhone, sans passer par internet.</li>
+      <li><strong>Face ID :</strong> c'est ton iPhone qui te reconnaît. L'app ne reçoit qu'un « oui » ou un « non », jamais ton visage.</li>
+    </ul>
+
+    <h2>Ce qui n'est jamais fait</h2>
+    <p>Tes données ne sont ni vendues, ni partagées avec des annonceurs. L'app ne contient aucune publicité, aucun outil de mesure d'audience et aucun pistage : on n'observe pas ce que tu fais dans l'app ni ailleurs.</p>
+
+    <h2>Les services utilisés</h2>
+    <ul>
+      <li><strong>Supabase</strong> : héberge le relais vers l'IA.</li>
+      <li><strong>OpenRouter</strong> : transmet la demande au modèle d'IA.</li>
+      <li><strong>Anthropic</strong> : fournit Claude, l'IA qui te répond.</li>
+      <li><strong>RevenueCat</strong> : vérifie l'état de ton abonnement.</li>
+      <li><strong>Apple</strong> : paiement, dictée (quand elle ne se fait pas sur le téléphone), Face ID et rappels.</li>
+    </ul>
+    <p>Certains de ces services sont situés hors de l'Union européenne, notamment aux États-Unis. Les échanges avec eux sont chiffrés.</p>
+
+    <h2>Âge</h2>
+    <p>Démêle est réservée aux personnes de 16 ans et plus. Si l'année de naissance indiquée donne moins de 16 ans, l'app s'arrête dès l'accueil.</p>
+
+    <h2>Tes droits</h2>
+    <p>Tu peux consulter, modifier et effacer tes données directement dans l'app, puisqu'elles sont sur ton téléphone. Pour toute question ou demande sur tes données, écris à <a href="mailto:contact@demele.app">contact@demele.app</a>. Tu peux aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+
+    <h2>Changements</h2>
+    <p>Si cette politique change, la nouvelle version sera publiée sur cette page, avec sa date de mise à jour.</p>
+
+    <footer class="bas">
+      <a href="../">Accueil</a><a href="../aide/">Aide et contact</a>
+    </footer>
+  </div>
+</body>
+</html>
