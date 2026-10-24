@@ -59,8 +59,13 @@
   content: ''; position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: 38vh;
   background: linear-gradient(180deg, rgba(146,161,181,0), #92A1B5);
 }
-.scene .paysage img { display: block; width: 100%; height: clamp(260px, 42vw, 520px); object-fit: cover; object-position: 50% 62%; }
-.scene .sol { background: #2b3747; height: 72px; position: relative; z-index: 1; }
+.scene .paysage { height: clamp(260px, 42vw, 520px); }
+.scene .paysage img {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%;
+  opacity: 0; transition: opacity 1.4s ease;
+}
+.scene .paysage img.visible { opacity: 1; }
+.scene .sol { background: #2b3747; height: 72px; position: relative; z-index: 1; transition: background 1.4s ease; }
 
 /* La carte du soir, comme sur l'accueil de l'app. */
 .carte-soir {

@@ -37,7 +37,10 @@
     </div>
 
     <div class="paysage" aria-hidden="true">
-      <img src="images/paysages/6-soir.svg" alt="">
+      <img src="images/paysages/6-soir.svg" alt="" class="visible">
+      <img data-src="images/paysages/1-soir.svg" alt="">
+      <img data-src="images/paysages/9-soir.svg" alt="">
+      <img data-src="images/paysages/10-soir.svg" alt="">
     </div>
     <div class="sol" aria-hidden="true"></div>
 
@@ -271,10 +274,38 @@
       dessiner();
       var attente; window.addEventListener('resize', function () { clearTimeout(attente); attente = setTimeout(dessiner, 150); });
 
-      // Quelques mots qui s'écrivent dans la carte du soir.
-      var phrase = "Ce soir j'ai enfin rappelé Léa…", el = document.getElementById('tape'), n = 0;
-      if (calme) el.textContent = phrase;
-      else setTimeout(function taper() { el.textContent = phrase.slice(0, ++n); if (n < phrase.length) setTimeout(taper, 55 + Math.random() * 60); }, 1400);
+      // La carte du soir : quatre débuts de soirée qui s'écrivent puis s'effacent, chacun avec son paysage
+      // (Marais, Col enneigé, Dunes, Archipel) et la couleur de son premier plan jusqu'en bas.
+      var DEBUTS = [
+        { texte: "Ce soir j'ai enfin rappelé Léa…", sol: '#2b3747' },
+        { texte: "Je sais pas par où commencer, tout se mélange…", sol: '#d3bda8' },
+        { texte: "Réunion tendue ce matin, j'ai rien dit…", sol: '#ad825d' },
+        { texte: "Journée toute simple, mais je veux la garder…", sol: '#273342' }
+      ];
+      var el = document.getElementById('tape'), decors = document.querySelectorAll('.scene .paysage img');
+      var sol = document.querySelector('.scene .sol'), rang = 0;
+      // Les trois autres paysages ne se chargent qu'une fois la page prête.
+      window.addEventListener('load', function () { decors.forEach(function (i) { if (i.dataset.src) i.src = i.dataset.src; }); });
+      function decor(k) {
+        decors.forEach(function (i, j) { i.classList.toggle('visible', j === k); });
+        sol.style.background = DEBUTS[k].sol;
+      }
+      function ecrire(k) {
+        var phrase = DEBUTS[k].texte, n = 0;
+        (function taper() {
+          el.textContent = phrase.slice(0, ++n);
+          if (n < phrase.length) return setTimeout(taper, 55 + Math.random() * 60);
+          setTimeout(function effacer() {
+            el.textContent = phrase.slice(0, --n);
+            if (n > 0) return setTimeout(effacer, 22);
+            rang = (k + 1) % DEBUTS.length;
+            decor(rang);
+            setTimeout(function () { ecrire(rang); }, 900);
+          }, 2600);
+        })();
+      }
+      if (calme) el.textContent = DEBUTS[0].texte;
+      else setTimeout(function () { ecrire(0); }, 1400);
 
       // Les soirées d'exemple : une à la fois, la première au hasard, puis elles défilent toutes seules.
       var EXEMPLES = [
