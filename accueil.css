@@ -88,11 +88,6 @@
 .bloc h2 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.1; letter-spacing: -.5px; margin: 0 0 14px; }
 .bloc .chapeau { font-size: 18px; color: var(--ardoise); max-width: 560px; margin: 0 0 48px; }
 
-/* Un soir, trois gestes */
-.gestes { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
-.geste .numero { font-size: 13px; color: var(--ardoise); margin-bottom: 6px; }
-.geste h3 { font-size: 21px; margin: 0 0 6px; }
-.geste > p { color: var(--ardoise); font-size: 16px; margin: 0 0 18px; }
 .ecran {
   background: #fff; border: 1px solid var(--ligne); border-radius: 20px; padding: 18px;
   box-shadow: 0 4px 18px rgba(41,52,63,.06); font-size: 15px;
@@ -139,15 +134,7 @@
 .liste-douce li { padding: 10px 0; border-top: 1px solid var(--ligne); }
 .liste-douce li:last-child { border-bottom: 1px solid var(--ligne); }
 .bilan { padding: 22px; }
-.bilan .resume { font-size: 18px; font-weight: 600; line-height: 1.35; margin: 0 0 18px; }
 .bilan h4 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--ardoise); font-weight: 500; margin: 20px 0 10px; }
-.semaine { display: flex; justify-content: space-between; }
-.semaine span { display: grid; justify-items: center; gap: 6px; font-size: 12px; color: var(--ardoise); }
-.semaine i { width: 24px; height: 24px; border-radius: 50%; display: block; }
-.semaine .vide i { border: 1.5px dashed var(--ligne); }
-.place { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 15px; }
-.place b { width: 22px; height: 22px; border-radius: 6px; flex: none; }
-.place em { margin-left: auto; font-style: normal; color: var(--ardoise); font-size: 14px; }
 .revient { background: var(--ivoire); border-radius: 14px; padding: 14px; margin: 0; }
 
 /* Sans pression */
@@ -175,9 +162,8 @@
 .apparait.vu { opacity: 1; transform: none; }
 
 @media (max-width: 860px) {
-  .gestes, .trois, .deux { grid-template-columns: 1fr; }
-  .gestes { gap: 40px; }
-  .deux { gap: 32px; }
+  .trois, .deux { grid-template-columns: 1fr; }
+    .deux { gap: 32px; }
   .promesses { grid-template-columns: 1fr 1fr; }
   .bloc { padding: 72px 20px; }
 }
@@ -188,4 +174,46 @@
 @media (prefers-reduced-motion: reduce) {
   .apparait { opacity: 1; transform: none; transition: none; }
   .champ .curseur { animation: none; }
+}
+
+/* ——— La soirée d'exemple qui défile ——— */
+.demo { transition: opacity .35s ease; }
+.demo.change .demo-grille, .demo.change .situation { opacity: 0; }
+.demo-haut { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.situation { margin: 0; font-size: 18px; font-weight: 600; transition: opacity .35s ease; }
+.points { display: flex; gap: 8px; flex: none; }
+.points button { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--encre); background: transparent; padding: 0; cursor: pointer; }
+.points button[aria-selected="true"] { background: var(--encre); }
+.demo-grille { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; transition: opacity .35s ease; }
+.demo-colonne { display: grid; gap: 16px; }
+.etape .petit b { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--encre); color: var(--ivoire); font-size: 11px; margin-right: 8px; }
+.etape .texte { font-size: 16px; line-height: 1.6; }
+.etape .reste { color: transparent; }
+.curseur-demo { display: inline-block; width: 1.5px; height: 17px; background: var(--encre); vertical-align: -3px; animation: clignote 1s steps(1) infinite; }
+.etape.cachee { opacity: 0; transform: translateY(8px); }
+.etape { transition: opacity .6s ease, transform .6s ease; }
+.question-ia { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.4; }
+.phrase-cle { margin: 28px 0 0; text-align: center; font-size: 19px; font-weight: 600; letter-spacing: -.2px; }
+
+/* ——— Le bilan qui relie les soirées ——— */
+.nom-semaine { margin: 0 0 16px; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; font-weight: 400; }
+.extraits { display: grid; gap: 8px; }
+.extrait {
+  margin: 0; padding: 10px 12px 10px 14px; border-radius: 12px; background: var(--ivoire);
+  font-size: 14px; line-height: 1.45; border-left: 3px solid transparent;
+  opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease, border-color .6s ease, background .6s ease;
+}
+.extrait.vu { opacity: 1; transform: none; }
+.extrait .jour { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ardoise); margin-bottom: 2px; }
+.bilan.relie .extrait.travail { border-left-color: var(--travail); background: #EEF3F9; }
+.bilan.relie .extrait.leger { border-left-color: var(--leger); background: #FBF1E8; }
+.lecture { opacity: 0; transform: translateY(8px); transition: opacity .8s ease .2s, transform .8s ease .2s; }
+.bilan.relie .lecture { opacity: 1; transform: none; }
+.allege { margin: 0; line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .demo-grille { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .extrait, .lecture, .etape { opacity: 1 !important; transform: none !important; transition: none; }
 }

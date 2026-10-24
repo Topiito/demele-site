@@ -58,44 +58,36 @@
     <h2>Trois gestes, quelques minutes.</h2>
     <p class="chapeau">Pas de page blanche à remplir, pas de série à tenir. Juste ce qui s'est passé aujourd'hui, et un peu de recul avant de dormir.</p>
 
-    <div class="gestes">
-      <div class="geste apparait">
-        <div class="numero">1</div>
-        <h3>Raconte</h3>
-        <p>Quelques mots, écrits ou dictés. Les bons moments comme les plus lourds.</p>
-        <div class="ecran">
-          <p class="petit">Ton écrit</p>
-          <p class="texte">Réunion tendue ce matin, je n'ai rien dit alors que j'aurais voulu. Ce soir j'ai rappelé Léa, on a ri comme avant.</p>
-          <div class="humeurs">
-            <span><i style="background:var(--lourd)"></i>Lourd</span>
-            <span><i style="background:var(--bof)"></i>Bof</span>
-            <span><i style="background:var(--neutre)"></i>Neutre</span>
-            <span class="choisie"><i style="background:var(--bien)"></i>Bien</span>
-            <span><i style="background:var(--leger)"></i>Léger</span>
+    <!-- Une soirée d'exemple à la fois, tirée au hasard, puis les suivantes défilent. -->
+    <div class="demo" id="demo" aria-live="polite">
+      <div class="demo-haut">
+        <p class="situation" id="situation"></p>
+        <div class="points" id="points" role="tablist" aria-label="Choisir une soirée d'exemple"></div>
+      </div>
+      <div class="demo-grille">
+        <div class="ecran etape">
+          <p class="petit"><b>1</b>Raconte · ton écrit</p>
+          <p class="texte"><span id="d-tape"></span><span class="curseur-demo"></span><span class="reste" id="d-reste"></span></p>
+          <div class="humeurs" id="d-humeurs">
+            <span data-h="lourd"><i style="background:var(--lourd)"></i>Lourd</span>
+            <span data-h="bof"><i style="background:var(--bof)"></i>Bof</span>
+            <span data-h="neutre"><i style="background:var(--neutre)"></i>Neutre</span>
+            <span data-h="bien"><i style="background:var(--bien)"></i>Bien</span>
+            <span data-h="leger"><i style="background:var(--leger)"></i>Léger</span>
+          </div>
+        </div>
+        <div class="demo-colonne">
+          <div class="ecran etape cachee" id="d-etape2">
+            <p class="petit"><b>2</b>Démêle · faire le point</p>
+            <p class="synthese" id="d-demele"></p>
+          </div>
+          <div class="ecran etape cachee" id="d-etape3">
+            <p class="petit" id="d-titre3"></p>
+            <div id="d-suite"></div>
           </div>
         </div>
       </div>
-
-      <div class="geste apparait">
-        <div class="numero">2</div>
-        <h3>Démêle</h3>
-        <p>L'IA te rend ce que tu as dit, plus clairement. Sans juger, avec tes mots.</p>
-        <div class="ecran">
-          <p class="petit">Faire le point</p>
-          <p class="synthese">Ta journée a eu deux visages : une réunion où tu t'es tu, et une soirée qui t'a fait du bien. Ce qui reste, c'est surtout ce que tu n'as pas pu dire.</p>
-        </div>
-      </div>
-
-      <div class="geste apparait">
-        <div class="numero">3</div>
-        <h3>Tire un fil</h3>
-        <p>Un seul petit pas pour demain. Le matin, il t'attend sur l'accueil.</p>
-        <div class="ecran">
-          <p class="petit">Hier soir, tu as choisi :</p>
-          <div class="fil"><span class="rond"></span>Noter ce que j'aurais voulu dire en réunion</div>
-          <div class="boutons"><span>C'est fait</span><span>Pas encore</span><span>Laisser de côté</span></div>
-        </div>
-      </div>
+      <p class="phrase-cle">Elle ne te dit pas quoi ressentir. Elle t'aide à y voir clair.</p>
     </div>
   </section>
 
@@ -143,7 +135,7 @@
       <div>
         <p class="surtitre">Les bilans</p>
         <h2>Vois ce qui revient.</h2>
-        <p class="chapeau">Chaque semaine et chaque mois, un bilan relie tes soirées. Il ne tranche pas : il te pose la question, et c'est toi qui dis si ça te correspond.</p>
+        <p class="chapeau">Seul, on ne relit pas ses trente dernières soirées. Chaque semaine et chaque mois, un bilan les relie pour toi. Il ne fait que constater, avec tes mots et tes dates : c'est toi qui dis si ça te correspond.</p>
         <ul class="liste-douce">
           <li>L'humeur de chaque soir, que tu choisis toi-même</li>
           <li>Ce qui a pris de la place, en nombre de soirs</li>
@@ -152,25 +144,22 @@
         </ul>
       </div>
 
-      <div class="ecran bilan apparait">
+      <div class="ecran bilan" id="bilan">
         <p class="petit">Ta semaine</p>
-        <p class="resume">Une semaine chargée au travail, adoucie par les soirées avec tes proches.</p>
-        <h4>Tes soirs</h4>
-        <div class="semaine">
-          <span><i style="background:var(--bof)"></i>L</span>
-          <span><i style="background:var(--lourd)"></i>M</span>
-          <span><i style="background:var(--neutre)"></i>M</span>
-          <span><i style="background:var(--bien)"></i>J</span>
-          <span class="vide"><i></i>V</span>
-          <span><i style="background:var(--leger)"></i>S</span>
-          <span><i style="background:var(--bien)"></i>D</span>
+        <p class="nom-semaine">Ce que je n'ai pas dit</p>
+        <div class="extraits">
+          <p class="extrait travail"><span class="jour">Lundi</span>« En réunion j'ai encore laissé passer, j'ai rien dit sur le budget. »</p>
+          <p class="extrait travail"><span class="jour">Mercredi</span>« Karim a présenté mon idée comme la sienne. J'ai souri. »</p>
+          <p class="extrait travail"><span class="jour">Jeudi</span>« J'avais préparé ce que je voulais dire, et au dernier moment je me suis tu. »</p>
+          <p class="extrait leger"><span class="jour">Dimanche</span>« Balade avec mon frère, on a parlé de tout sauf du boulot. Ça m'a fait du bien. »</p>
         </div>
-        <h4>Ce qui a pris de la place</h4>
-        <div class="place"><b style="background:var(--travail)"></b>Travail<em>4 soirs</em></div>
-        <div class="place"><b style="background:var(--relations)"></b>Relations<em>3 soirs</em></div>
-        <h4>Ce qui revient</h4>
-        <p class="revient">Est-ce que tu as souvent l'impression de garder pour toi ce que tu penses au travail ?</p>
-        <div class="boutons"><span>Ça me correspond</span><span>Corriger</span></div>
+        <div class="lecture">
+          <h4>Ce qui revient</h4>
+          <p class="revient">Trois soirs cette semaine, tu racontes un moment au travail où tu n'as pas dit ce que tu pensais : lundi sur le budget, mercredi quand Karim a présenté ton idée, jeudi au dernier moment.</p>
+          <div class="boutons"><span>Ça me correspond</span><span>Corriger</span></div>
+          <h4>Ce qui s'est allégé</h4>
+          <p class="allege">Dimanche, la balade avec ton frère, loin du travail, t'a fait du bien.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -286,6 +275,95 @@
       var phrase = "Ce soir j'ai enfin rappelé Léa…", el = document.getElementById('tape'), n = 0;
       if (calme) el.textContent = phrase;
       else setTimeout(function taper() { el.textContent = phrase.slice(0, ++n); if (n < phrase.length) setTimeout(taper, 55 + Math.random() * 60); }, 1400);
+
+      // Les soirées d'exemple : une à la fois, la première au hasard, puis elles défilent toutes seules.
+      var EXEMPLES = [
+        {
+          situation: '« Tout se mélange dans ma tête »', humeur: 'bof',
+          ecrit: "Bon alors aujourd'hui je sais pas trop par où commencer. Le matin réunion avec Karim pour le dossier Lemaire, et en fait il veut tout pour vendredi, alors que je pensais qu'on avait jusqu'à la fin du mois. Du coup j'ai passé l'après-midi à refaire le planning. Ma mère a appelé deux fois, j'ai pas décroché, faut que je la rappelle. Ah et la machine fait encore ce bruit bizarre. Enfin bref. Le soir j'ai couru vingt minutes et ça m'a fait du bien, c'était le seul moment où j'ai pas pensé au boulot. Là j'ai encore vendredi qui tourne dans la tête.",
+          demele: "La journée a tourné autour du dossier Lemaire : Karim le veut pour vendredi, plus tôt que prévu, et l'après-midi est passé à refaire le planning. À côté, ta mère à rappeler et la machine qui fait encore ce bruit. Les vingt minutes de course du soir ont été le seul moment sans le travail.",
+          question: "Qu'est-ce qui pèse le plus dans ce délai de vendredi ?", fil: 'Rappeler ma mère'
+        },
+        {
+          situation: '« Je repense aux mêmes situations »', humeur: 'lourd',
+          ecrit: "Je pensais que ça allait mieux. Au travail ça allait, j'ai même rigolé avec Sophie à la pause. Et puis ce soir en rangeant le placard je suis tombé sur son sweat gris. Je suis resté assis par terre je sais pas combien de temps. Après j'ai relu nos messages de l'été, encore. Je sais que partir était la bonne décision, je le sais. Mais pourquoi j'arrive pas à passer à autre chose, ça fait deux mois.",
+          demele: "La journée avait bien commencé, avec un vrai moment de rire avec Sophie à la pause. Ce soir, son sweat gris retrouvé en rangeant t'a laissé assis par terre un long moment, puis tu as relu vos messages de l'été. Tu restes sûr que partir était la bonne décision, et tu te demandes pourquoi, deux mois après, c'est encore si présent.",
+          question: "Qu'est-ce qui te donne envie de relire ces messages, le soir ?"
+        },
+        {
+          situation: 'Une belle soirée', humeur: 'leger',
+          ecrit: "Journée toute simple mais je veux la garder. Café au soleil avec Inès, on a parlé deux heures sans regarder l'heure, de ses projets à Lyon, de mon envie de reprendre la guitare. Elle m'a dit que j'avais l'air plus léger qu'avant. C'est vrai en fait. Ça faisait longtemps.",
+          demele: "Une journée simple que tu veux garder : deux heures de café au soleil avec Inès, à parler de ses projets à Lyon et de ton envie de reprendre la guitare. Elle t'a trouvé plus léger qu'avant, et tu le ressens aussi. Ça faisait longtemps.",
+          fil: 'Ressortir ma guitare'
+        }
+      ];
+      var $ = function (id) { return document.getElementById(id); };
+      var points = $('points'), minuteurs = [], courant = Math.floor(Math.random() * EXEMPLES.length);
+      EXEMPLES.forEach(function (e, k) {
+        var b = document.createElement('button');
+        b.setAttribute('role', 'tab'); b.setAttribute('aria-label', e.situation);
+        b.addEventListener('click', function () { montrer(k); });
+        points.appendChild(b);
+      });
+      function plusTard(f, ms) { minuteurs.push(setTimeout(f, ms)); }
+      function montrer(k) {
+        minuteurs.forEach(clearTimeout); minuteurs = [];
+        courant = k;
+        var e = EXEMPLES[k], demo = $('demo');
+        demo.classList.add('change');
+        plusTard(function () {
+          demo.classList.remove('change');
+          $('situation').textContent = e.situation;
+          [].forEach.call(points.children, function (b, i) { b.setAttribute('aria-selected', i === k); });
+          [].forEach.call($('d-humeurs').children, function (h) { h.classList.toggle('choisie', h.dataset.h === e.humeur); });
+          $('d-demele').textContent = e.demele;
+          $('d-titre3').innerHTML = e.question ? '<b>3</b>Approfondir · une question' : '<b>3</b>Tire un fil · pour demain';
+          $('d-suite').innerHTML = e.question
+            ? '<p class="question-ia"></p>'
+            : '<div class="fil"><span class="rond"></span><span class="fil-texte"></span></div>';
+          $('d-suite').querySelector('.question-ia, .fil-texte').textContent = e.question || e.fil;
+          if (e.question && e.fil) {
+            var t = document.createElement('p'); t.className = 'petit'; t.style.margin = '14px 0 8px'; t.textContent = 'Et pour demain :';
+            var f = document.createElement('div'); f.className = 'fil';
+            f.innerHTML = '<span class="rond"></span><span></span>'; f.lastChild.textContent = e.fil;
+            $('d-suite').appendChild(t); $('d-suite').appendChild(f);
+          }
+          $('d-etape2').classList.add('cachee'); $('d-etape3').classList.add('cachee');
+          var n = 0, texte = e.ecrit;
+          function taper() {
+            n = Math.min(texte.length, n + 3);
+            $('d-tape').textContent = texte.slice(0, n); $('d-reste').textContent = texte.slice(n);
+            if (n < texte.length) plusTard(taper, 28);
+            else {
+              plusTard(function () { $('d-etape2').classList.remove('cachee'); }, 600);
+              plusTard(function () { $('d-etape3').classList.remove('cachee'); }, 1800);
+              plusTard(function () { montrer((courant + 1) % EXEMPLES.length); }, 13000);
+            }
+          }
+          if (calme) {
+            $('d-tape').textContent = texte; $('d-reste').textContent = '';
+            $('d-etape2').classList.remove('cachee'); $('d-etape3').classList.remove('cachee');
+          } else { $('d-tape').textContent = ''; $('d-reste').textContent = texte; plusTard(taper, 300); }
+        }, 350);
+      }
+
+      // Le bilan : les extraits arrivent un à un, puis ce qui les relie.
+      var bilan = $('bilan');
+      function lireLeBilan() {
+        bilan.classList.add('vu');
+        [].forEach.call(bilan.querySelectorAll('.extrait'), function (x, k) { setTimeout(function () { x.classList.add('vu'); }, k * 500); });
+        setTimeout(function () { bilan.classList.add('relie'); }, 2400);
+      }
+
+      if ('IntersectionObserver' in window && !calme) {
+        var surveiller = function (el, f) {
+          var ob = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { ob.disconnect(); f(); } }, { threshold: 0.3 });
+          ob.observe(el);
+        };
+        $('situation').textContent = EXEMPLES[courant].situation;
+        surveiller($('demo'), function () { montrer(courant); });
+        surveiller(bilan, lireLeBilan);
+      } else { montrer(courant); bilan.classList.add('vu', 'relie'); bilan.querySelectorAll('.extrait').forEach(function (x) { x.classList.add('vu'); }); }
 
       // Les blocs apparaissent doucement en arrivant à l'écran.
       var vus = document.querySelectorAll('.apparait');
