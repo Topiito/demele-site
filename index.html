@@ -82,7 +82,8 @@
       <div class="demo-grille">
         <div class="ecran etape">
           <p class="petit"><b>1</b>Raconte · ton écrit</p>
-          <p class="texte"><span id="d-tape"></span><span class="curseur-demo"></span><span class="reste" id="d-reste"></span></p>
+          <p class="texte" id="d-texte"><span id="d-tape"></span><span class="curseur-demo"></span><span class="reste" id="d-reste"></span></p>
+          <button class="lire-tout" id="d-lire" hidden>Lire tout</button>
           <div class="humeurs" id="d-humeurs">
             <span data-h="lourd"><i style="background:var(--lourd)"></i>Lourd</span>
             <span data-h="bof"><i style="background:var(--bof)"></i>Bof</span>
@@ -300,13 +301,13 @@
       // Les soirées d'exemple : une à la fois, la première au hasard ; le visiteur choisit les autres avec les points.
       var EXEMPLES = [
         {
-          situation: '« Tout se mélange dans ma tête »', humeur: 'bof',
+          situation: '«\u00a0Tout se mélange dans ma tête\u00a0»', humeur: 'bof',
           ecrit: "Bon alors aujourd'hui je sais pas trop par où commencer. Le matin réunion avec Karim pour le dossier Lemaire, et en fait il veut tout pour vendredi, alors que je pensais qu'on avait jusqu'à la fin du mois. Du coup j'ai passé l'après-midi à refaire le planning. Ma mère a appelé deux fois, j'ai pas décroché, faut que je la rappelle. Ah et la machine fait encore ce bruit bizarre. Enfin bref. Le soir j'ai couru vingt minutes et ça m'a fait du bien, c'était le seul moment où j'ai pas pensé au boulot. Là j'ai encore vendredi qui tourne dans la tête.",
           demele: "La journée a tourné autour du dossier Lemaire : Karim le veut pour vendredi, plus tôt que prévu, et l'après-midi est passé à refaire le planning. À côté, ta mère à rappeler et la machine qui fait encore ce bruit. Les vingt minutes de course du soir ont été le seul moment sans le travail.",
           question: "Qu'est-ce qui pèse le plus dans ce délai de vendredi ?", fil: 'Rappeler ma mère'
         },
         {
-          situation: '« Je repense aux mêmes situations »', humeur: 'lourd',
+          situation: '«\u00a0Je repense aux mêmes situations\u00a0»', humeur: 'lourd',
           ecrit: "Je pensais que ça allait mieux. Au travail ça allait, j'ai même rigolé avec Sophie à la pause. Et puis ce soir en rangeant le placard je suis tombée sur son sweat gris. Je suis restée assise par terre je sais pas combien de temps. Après j'ai relu nos messages de l'été, encore. Je sais que partir était la bonne décision, je le sais. Mais pourquoi j'arrive pas à passer à autre chose, ça fait deux mois.",
           demele: "La journée avait bien commencé, avec un vrai moment de rire avec Sophie à la pause. Ce soir, son sweat gris retrouvé en rangeant t'a laissée assise par terre un long moment, puis tu as relu vos messages de l'été. Tu restes sûre que partir était la bonne décision, et tu te demandes pourquoi, deux mois après, c'est encore si présent.",
           question: "Qu'est-ce qui te donne envie de relire ces messages, le soir ?"
@@ -389,12 +390,17 @@
             $('d-suite').appendChild(t); $('d-suite').appendChild(f);
           }
           $('d-etape2').classList.add('cachee'); $('d-etape3').classList.add('cachee');
+          $('d-texte').classList.remove('repliee'); $('d-lire').hidden = true;
+          // Sur téléphone, l'écriture va un peu plus vite, et l'écrit se replie une fois fini pour laisser
+          // la réponse de Démêle remonter dans l'écran (« Lire tout » le rouvre).
+          var telephone = window.matchMedia('(max-width: 860px)').matches;
           var n = 0, texte = e.ecrit;
           function taper() {
             n = Math.min(texte.length, n + 3);
             $('d-tape').textContent = texte.slice(0, n); $('d-reste').textContent = texte.slice(n);
-            if (n < texte.length) plusTard(taper, 28);
+            if (n < texte.length) plusTard(taper, telephone ? 23 : 28);
             else {
+              if (telephone) plusTard(replier, 400);
               plusTard(function () { $('d-etape2').classList.remove('cachee'); }, 600);
               plusTard(function () { $('d-etape3').classList.remove('cachee'); }, 1800);
             }
@@ -405,6 +411,13 @@
           } else { $('d-tape').textContent = ''; $('d-reste').textContent = texte; plusTard(taper, 300); }
         }, 350);
       }
+
+      function replier() {
+        var t = $('d-texte'), ligne = parseFloat(getComputedStyle(t).lineHeight) || 25.6;
+        if (t.scrollHeight <= ligne * 6.5) return;
+        t.classList.add('repliee'); $('d-lire').hidden = false;
+      }
+      $('d-lire').addEventListener('click', function () { $('d-texte').classList.remove('repliee'); $('d-lire').hidden = true; });
 
       // Le bilan : les extraits arrivent un à un, puis ce qui les relie. Il suit la soirée choisie en haut.
       var bilan = $('bilan'), bilanLu = false, minuteursBilan = [];
