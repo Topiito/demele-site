@@ -61,7 +61,7 @@
     <h2>Trois gestes, quelques minutes.</h2>
     <p class="chapeau">Pas de page blanche à remplir, pas de série à tenir. Juste ce qui s'est passé aujourd'hui, et un peu de recul avant de dormir.</p>
 
-    <!-- Une soirée d'exemple à la fois, tirée au hasard, puis les suivantes défilent. -->
+    <!-- Une soirée d'exemple à la fois, tirée au hasard ; les points permettent d'en choisir une autre. -->
     <div class="demo" id="demo" aria-live="polite">
       <div class="demo-haut">
         <p class="situation" id="situation"></p>
@@ -307,7 +307,7 @@
       if (calme) el.textContent = DEBUTS[0].texte;
       else setTimeout(function () { ecrire(0); }, 1400);
 
-      // Les soirées d'exemple : une à la fois, la première au hasard, puis elles défilent toutes seules.
+      // Les soirées d'exemple : une à la fois, la première au hasard ; le visiteur choisit les autres avec les points.
       var EXEMPLES = [
         {
           situation: '« Tout se mélange dans ma tête »', humeur: 'bof',
@@ -368,7 +368,6 @@
             else {
               plusTard(function () { $('d-etape2').classList.remove('cachee'); }, 600);
               plusTard(function () { $('d-etape3').classList.remove('cachee'); }, 1800);
-              plusTard(function () { montrer((courant + 1) % EXEMPLES.length); }, 13000);
             }
           }
           if (calme) {
