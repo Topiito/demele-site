@@ -119,16 +119,6 @@
         </div>
       </div>
 
-      <div class="paysages" aria-label="Les paysages de Démêle">
-        <figure><img src="images/paysages/1-soir.svg" alt="Col enneigé au crépuscule" loading="lazy"><figcaption>Col enneigé</figcaption></figure>
-        <figure><img src="images/paysages/6-soir.svg" alt="Marais au crépuscule" loading="lazy"><figcaption>Marais</figcaption></figure>
-        <figure><img src="images/paysages/5-soir.svg" alt="Rivière au crépuscule" loading="lazy"><figcaption>Rivière</figcaption></figure>
-        <figure><img src="images/paysages/9-soir.svg" alt="Dunes au crépuscule" loading="lazy"><figcaption>Dunes</figcaption></figure>
-        <figure><img src="images/paysages/7-soir.svg" alt="Vallée boisée au crépuscule" loading="lazy"><figcaption>Vallée boisée</figcaption></figure>
-        <figure><img src="images/paysages/10-soir.svg" alt="Archipel au crépuscule" loading="lazy"><figcaption>Archipel</figcaption></figure>
-        <figure><img src="images/paysages/8-soir.svg" alt="Anse aux pins au crépuscule" loading="lazy"><figcaption>Anse aux pins</figcaption></figure>
-        <figure><img src="images/paysages/11-soir.svg" alt="Savane au crépuscule" loading="lazy"><figcaption>Savane</figcaption></figure>
-      </div>
     </div>
   </section>
 
@@ -149,19 +139,15 @@
 
       <div class="ecran bilan" id="bilan">
         <p class="petit">Ta semaine</p>
-        <p class="nom-semaine">Ce que je n'ai pas dit</p>
-        <div class="extraits">
-          <p class="extrait travail"><span class="jour">Lundi</span>« En réunion j'ai encore laissé passer, j'ai rien dit sur le budget. »</p>
-          <p class="extrait travail"><span class="jour">Mercredi</span>« Karim a présenté mon idée comme la sienne. J'ai souri. »</p>
-          <p class="extrait travail"><span class="jour">Jeudi</span>« J'avais préparé ce que je voulais dire, et au dernier moment je me suis tu. »</p>
-          <p class="extrait leger"><span class="jour">Dimanche</span>« Balade avec mon frère, on a parlé de tout sauf du boulot. Ça m'a fait du bien. »</p>
-        </div>
+        <p class="nom-semaine" id="b-nom"></p>
+        <div class="extraits" id="b-extraits"></div>
         <div class="lecture">
           <h4>Ce qui revient</h4>
-          <p class="revient">Trois soirs cette semaine, tu racontes un moment au travail où tu n'as pas dit ce que tu pensais : lundi sur le budget, mercredi quand Karim a présenté ton idée, jeudi au dernier moment.</p>
+          <p class="revient" id="b-revient"></p>
           <div class="boutons"><span>Ça me correspond</span><span>Corriger</span></div>
           <h4>Ce qui s'est allégé</h4>
-          <p class="allege">Dimanche, la balade avec ton frère, loin du travail, t'a fait du bien.</p>
+          <p class="allege" id="b-allege"></p>
+          <div id="b-fils"></div>
         </div>
       </div>
     </div>
@@ -197,14 +183,6 @@
     <a class="lien-doux" href="confidentialite/">Tout savoir sur tes données →</a>
   </section>
 
-  <!-- Le matin -->
-  <section class="matin">
-    <p class="surtitre">Le matin</p>
-    <h2>Le soir tu démêles, le matin tu avances.</h2>
-    <p>Démêle arrive bientôt sur iPhone. Gratuit pour écrire, avec Premium pour l'IA et les bilans.</p>
-    <span class="pastille-store"><span class="point"></span>Bientôt sur l'App Store</span>
-    <img src="images/paysages/6-matin.svg" alt="" aria-hidden="true">
-  </section>
   <footer class="pied">
     <nav>
       <a href="confidentialite/">Politique de confidentialité</a>
@@ -328,6 +306,44 @@
           fil: 'Ressortir ma guitare'
         }
       ];
+      // La semaine de chaque soirée d'exemple (même ordre) : son bilan relie la soirée ci-dessus à ses voisines.
+      // teinte : la couleur du thème qui revient ; ici : la soirée de l'exemple ; lie : les soirs reliés.
+      var SEMAINES = [
+        {
+          nom: 'Avant vendredi', teinte: '#5D86B8',
+          extraits: [
+            { jour: 'Lundi', texte: "Il veut tout pour vendredi… j'ai passé l'après-midi à refaire le planning.", ici: true, lie: true },
+            { jour: 'Mardi', texte: "Resté tard sur Lemaire, j'ai annulé le dîner avec Paul.", lie: true },
+            { jour: 'Mercredi', texte: "Réveillé à 5 h en pensant au dossier, impossible de me rendormir.", lie: true },
+            { jour: 'Vendredi', texte: "Dossier rendu. J'ai couru en rentrant, vidé mais soulagé.", leger: true }
+          ],
+          revient: "Lundi, mardi et mercredi, le dossier Lemaire prend toute la place : le planning à refaire, le dîner avec Paul annulé, un réveil à 5 h.",
+          allege: "Vendredi, le dossier rendu et la course en rentrant t'ont soulagé."
+        },
+        {
+          nom: "Les messages de l'été", teinte: '#C97B97',
+          extraits: [
+            { jour: 'Lundi', texte: "J'ai pensé à elle en passant devant notre café.", lie: true },
+            { jour: 'Mercredi', texte: "Je suis tombé sur son sweat gris… j'ai relu nos messages de l'été, encore.", ici: true, lie: true },
+            { jour: 'Jeudi', texte: "J'ai failli lui écrire. J'ai rangé mon téléphone.", lie: true },
+            { jour: 'Samedi', texte: "Soirée chez Malik avec la bande. J'ai ri, vraiment. Ça fait du bien.", leger: true }
+          ],
+          revient: "Trois soirs, elle revient dans tes écrits : lundi en passant devant votre café, mercredi avec son sweat et vos messages de l'été, jeudi quand tu as failli lui écrire.",
+          allege: "Samedi, la soirée chez Malik avec la bande t'a fait rire, vraiment."
+        },
+        {
+          nom: 'Reprendre la guitare', teinte: '#8FAE52',
+          extraits: [
+            { jour: 'Mardi', texte: "Regardé des vidéos de guitare au lieu de dormir.", lie: true },
+            { jour: 'Jeudi', texte: "Café au soleil avec Inès… mon envie de reprendre la guitare. Elle m'a dit que j'avais l'air plus léger.", ici: true, lie: true },
+            { jour: 'Samedi', texte: "Ressorti la guitare. Les doigts qui font mal, mais j'ai joué une heure.", lie: true },
+            { jour: 'Dimanche', texte: "Rangé l'appartement en musique. Une semaine douce.", leger: true }
+          ],
+          revient: "Trois soirs, la guitare revient : mardi avec les vidéos, jeudi en parlant avec Inès, samedi quand tu l'as ressortie pour jouer une heure.",
+          allege: "Jeudi, Inès t'a trouvé plus léger qu'avant, et tu le ressens aussi. Dimanche, tu parles d'une semaine douce.",
+          fils: "Ton fil de jeudi, « Ressortir ma guitare » : tiré samedi."
+        }
+      ];
       var $ = function (id) { return document.getElementById(id); };
       var points = $('points'), minuteurs = [], courant = Math.floor(Math.random() * EXEMPLES.length);
       EXEMPLES.forEach(function (e, k) {
@@ -348,6 +364,7 @@
           [].forEach.call(points.children, function (b, i) { b.setAttribute('aria-selected', i === k); });
           [].forEach.call($('d-humeurs').children, function (h) { h.classList.toggle('choisie', h.dataset.h === e.humeur); });
           $('d-demele').textContent = e.demele;
+          remplirLaSemaine(k);
           $('d-titre3').innerHTML = e.question ? '<b>3</b>Approfondir · une question' : '<b>3</b>Tire un fil · pour demain';
           $('d-suite').innerHTML = e.question
             ? '<p class="question-ia"></p>'
@@ -377,12 +394,35 @@
         }, 350);
       }
 
-      // Le bilan : les extraits arrivent un à un, puis ce qui les relie.
-      var bilan = $('bilan');
+      // Le bilan : les extraits arrivent un à un, puis ce qui les relie. Il suit la soirée choisie en haut.
+      var bilan = $('bilan'), bilanLu = false, minuteursBilan = [];
+      function remplirLaSemaine(k) {
+        var w = SEMAINES[k];
+        minuteursBilan.forEach(clearTimeout); minuteursBilan = [];
+        bilan.classList.remove('relie');
+        bilan.style.setProperty('--teinte', w.teinte);
+        $('b-nom').textContent = w.nom;
+        $('b-extraits').innerHTML = '';
+        w.extraits.forEach(function (x) {
+          var p = document.createElement('p'), j = document.createElement('span');
+          p.className = 'extrait' + (x.lie ? ' lie' : '') + (x.leger ? ' leger' : '');
+          j.className = 'jour'; j.textContent = x.jour;
+          if (x.ici) { var c = document.createElement('span'); c.className = 'ci-dessus'; c.textContent = 'la soirée ci-dessus'; j.appendChild(c); }
+          p.appendChild(j); p.appendChild(document.createTextNode('« ' + x.texte + ' »'));
+          $('b-extraits').appendChild(p);
+        });
+        $('b-revient').textContent = w.revient;
+        $('b-allege').textContent = w.allege;
+        $('b-fils').innerHTML = w.fils ? '<h4>Tes fils</h4><p class="allege"></p>' : '';
+        if (w.fils) $('b-fils').lastChild.textContent = w.fils;
+        if (bilanLu || calme) lireLeBilan();
+      }
       function lireLeBilan() {
+        bilanLu = true;
+        if (calme) { bilan.classList.add('vu', 'relie'); bilan.querySelectorAll('.extrait').forEach(function (x) { x.classList.add('vu'); }); return; }
         bilan.classList.add('vu');
-        [].forEach.call(bilan.querySelectorAll('.extrait'), function (x, k) { setTimeout(function () { x.classList.add('vu'); }, k * 500); });
-        setTimeout(function () { bilan.classList.add('relie'); }, 2400);
+        [].forEach.call(bilan.querySelectorAll('.extrait'), function (x, k) { minuteursBilan.push(setTimeout(function () { x.classList.add('vu'); }, k * 400)); });
+        minuteursBilan.push(setTimeout(function () { bilan.classList.add('relie'); }, 2000));
       }
 
       if ('IntersectionObserver' in window && !calme) {
@@ -391,9 +431,10 @@
           ob.observe(el);
         };
         $('situation').textContent = EXEMPLES[courant].situation;
+        remplirLaSemaine(courant);
         surveiller($('demo'), function () { montrer(courant); });
         surveiller(bilan, lireLeBilan);
-      } else { montrer(courant); bilan.classList.add('vu', 'relie'); bilan.querySelectorAll('.extrait').forEach(function (x) { x.classList.add('vu'); }); }
+      } else { montrer(courant); lireLeBilan(); }
 
       // Les blocs apparaissent doucement en arrivant à l'écran.
       var vus = document.querySelectorAll('.apparait');

@@ -150,14 +150,7 @@
 .promesse p { margin: 0; font-size: 14px; color: var(--ardoise); }
 .lien-doux { display: inline-block; margin-top: 24px; color: var(--ardoise); font-size: 15px; }
 
-/* Le matin, pour finir */
-.matin { position: relative; text-align: center; background: linear-gradient(180deg, var(--ivoire) 0%, #C6D9E4 45%); padding-top: 96px; }
-.matin h2 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.1; letter-spacing: -.5px; margin: 0 auto 12px; max-width: 640px; padding: 0 20px; }
-.matin p { color: var(--ardoise); margin: 0 auto; max-width: 460px; padding: 0 20px; }
-.matin .pastille-store { color: var(--encre); background: rgba(255,255,255,.6); border-color: rgba(41,52,63,.15); }
-.matin img { display: block; width: 100%; height: clamp(220px, 36vw, 440px); object-fit: cover; object-position: 50% 70%; margin-top: 40px; }
-.matin + .pied { background: #3c5265; color: rgba(250,248,243,.8); }
-.pied { padding: 28px 20px 40px; }
+.pied { padding: 28px 20px 40px; border-top: 1px solid var(--ligne); color: var(--ardoise); }
 .pied nav { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; }
 .pied a { color: inherit; white-space: nowrap; }
 .pied .signature { max-width: 1080px; margin: 14px auto 0; font-size: 13px; opacity: .7; }
@@ -210,8 +203,10 @@
 }
 .extrait.vu { opacity: 1; transform: none; }
 .extrait .jour { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ardoise); margin-bottom: 2px; }
-.bilan.relie .extrait.travail { border-left-color: var(--travail); background: #EEF3F9; }
+.bilan.relie .extrait.lie { border-left-color: var(--teinte); background: color-mix(in srgb, var(--teinte) 12%, #fff); }
 .bilan.relie .extrait.leger { border-left-color: var(--leger); background: #FBF1E8; }
+.extrait .ci-dessus { display: inline-block; margin-left: 8px; padding: 0 6px; border-radius: 999px; background: var(--encre); color: var(--ivoire); font-size: 10px; letter-spacing: .5px; text-transform: none; }
+.fils-semaine { margin: 14px 0 0; font-size: 14px; color: var(--ardoise); }
 .lecture { opacity: 0; transform: translateY(8px); transition: opacity .8s ease .2s, transform .8s ease .2s; }
 .bilan.relie .lecture { opacity: 1; transform: none; }
 .allege { margin: 0; line-height: 1.5; }
